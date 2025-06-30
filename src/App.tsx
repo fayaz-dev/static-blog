@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
+import BoltLogo from './components/BoltLogo';
 import Home from './pages/Home';
 import BlogPost from './pages/BlogPost';
 import About from './pages/About';
@@ -18,6 +19,7 @@ function App() {
         <div className="min-h-screen relative overflow-x-hidden transition-colors duration-300">
           <ScrollProgress />
           <FloatingElements />
+          <BoltLogo />
           
           {/* Background gradient */}
           <div className="fixed inset-0 bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900 -z-10 transition-colors duration-300" />
