@@ -1,6 +1,8 @@
 # Ethereal Thoughts - A Creative Blog Experience
 
-A beautifully crafted, modern blog website built with React, TypeScript, and Tailwind CSS. This project showcases a premium design aesthetic with smooth animations, dark/light mode support, and responsive layouts.
+A beautifully crafted, modern blog website built with React, TypeScript, and Tailwind CSS with one-shot prompt using ⚡ [bolt.new](https://bolt.new/?rid=a12ezd) ⚡.
+
+This project showcases a premium design aesthetic with smooth animations, dark/light mode support, and responsive layouts.
 
 ## 🌟 Features
 
@@ -197,6 +199,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 This website was created using the following main prompt:
 
+> Create world's most creative aesthetically pleasing static blog site with cool static features. Surprise me with creativity and beauty.
+>
+> - Use modern tools and standards
+> - Fix errors automatically
+> - Don't ask me anything, assume best practices of this platform.
+
+Which was then enhanced by bolt.new to the following prompt:
+
 > **"Create a beautiful, modern blog website with a creative and artistic design. The site should have:**
 > 
 > **Design & Aesthetics:**
@@ -236,4 +246,4 @@ This prompt guided the creation of a comprehensive, modern blog website that bal
 
 ---
 
-*Built with ❤️ using [Bolt.new](https://bolt.new)*
+*Built with ❤️ using [Bolt.new](https://bolt.new/?rid=a12ezd)*
