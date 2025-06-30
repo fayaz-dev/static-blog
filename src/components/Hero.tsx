@@ -33,7 +33,7 @@ const Hero = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-gradient-to-r from-primary-400 to-accent-400 rounded-full opacity-30"
+            className="absolute w-2 h-2 bg-gradient-to-r from-primary-400 to-accent-400 dark:from-primary-600 dark:to-accent-600 rounded-full opacity-30 dark:opacity-20"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -62,25 +62,25 @@ const Hero = () => {
           {/* Floating icons */}
           <div className="flex justify-center space-x-8 mb-8">
             <motion.div
-              className="p-3 rounded-full bg-gradient-to-r from-primary-100 to-accent-100"
+              className="p-3 rounded-full bg-gradient-to-r from-primary-100 to-accent-100 dark:from-primary-900/50 dark:to-accent-900/50"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Sparkles className="w-6 h-6 text-primary-600" />
+              <Sparkles className="w-6 h-6 text-primary-600 dark:text-primary-400" />
             </motion.div>
             <motion.div
-              className="p-3 rounded-full bg-gradient-to-r from-accent-100 to-primary-100"
+              className="p-3 rounded-full bg-gradient-to-r from-accent-100 to-primary-100 dark:from-accent-900/50 dark:to-primary-900/50"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
             >
-              <Heart className="w-6 h-6 text-accent-600" />
+              <Heart className="w-6 h-6 text-accent-600 dark:text-accent-400" />
             </motion.div>
             <motion.div
-              className="p-3 rounded-full bg-gradient-to-r from-primary-100 to-accent-100"
+              className="p-3 rounded-full bg-gradient-to-r from-primary-100 to-accent-100 dark:from-primary-900/50 dark:to-accent-900/50"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity, delay: 1 }}
             >
-              <Coffee className="w-6 h-6 text-primary-600" />
+              <Coffee className="w-6 h-6 text-primary-600 dark:text-primary-400" />
             </motion.div>
           </div>
 
@@ -90,12 +90,12 @@ const Hero = () => {
           >
             <span className="text-gradient">Ethereal</span>
             <br />
-            <span className="text-neutral-800">Thoughts</span>
+            <span className="text-neutral-800 dark:text-neutral-100">Thoughts</span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="text-xl md:text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 max-w-3xl mx-auto leading-relaxed"
           >
             Where creativity meets inspiration. Dive into a world of beautiful stories, 
             thoughtful insights, and creative expressions that touch the soul.
@@ -117,7 +117,7 @@ const Hero = () => {
             </motion.button>
 
             <motion.button
-              className="px-8 py-4 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-full hover:border-primary-400 hover:text-primary-600 transition-all duration-300"
+              className="px-8 py-4 border-2 border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-300 font-semibold rounded-full hover:border-primary-400 hover:text-primary-600 dark:hover:border-primary-400 dark:hover:text-primary-400 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -135,7 +135,7 @@ const Hero = () => {
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="flex flex-col items-center space-y-2 text-neutral-400"
+              className="flex flex-col items-center space-y-2 text-neutral-400 dark:text-neutral-500"
             >
               <span className="text-sm font-medium">Scroll to explore</span>
               <ArrowDown className="w-5 h-5" />
@@ -146,12 +146,12 @@ const Hero = () => {
 
       {/* Decorative elements */}
       <motion.div
-        className="absolute top-1/4 left-10 w-20 h-20 border-2 border-primary-200 rounded-full opacity-30"
+        className="absolute top-1/4 left-10 w-20 h-20 border-2 border-primary-200 dark:border-primary-800 rounded-full opacity-30 dark:opacity-20"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-10 w-16 h-16 border-2 border-accent-200 rounded-full opacity-30"
+        className="absolute bottom-1/4 right-10 w-16 h-16 border-2 border-accent-200 dark:border-accent-800 rounded-full opacity-30 dark:opacity-20"
         animate={{ rotate: -360 }}
         transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
       />

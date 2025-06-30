@@ -8,17 +8,17 @@
   }
   
   body {
-    @apply bg-neutral-50 text-neutral-900;
+    @apply bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 transition-colors duration-300;
   }
 }
 
 @layer components {
   .glass-effect {
-    @apply backdrop-blur-md bg-white/10 border border-white/20;
+    @apply backdrop-blur-md bg-white/10 dark:bg-neutral-900/10 border border-white/20 dark:border-neutral-700/20;
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-600 via-accent-500 to-primary-800 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-600 via-accent-500 to-primary-800 dark:from-primary-400 dark:via-accent-400 dark:to-primary-600 bg-clip-text text-transparent;
   }
   
   .hover-lift {
@@ -63,7 +63,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-neutral-100;
+  @apply bg-neutral-100 dark:bg-neutral-800;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -76,7 +76,7 @@
 
 /* Selection styling */
 ::selection {
-  @apply bg-accent-200 text-accent-900;
+  @apply bg-accent-200 text-accent-900 dark:bg-accent-800 dark:text-accent-100;
 }
 
 /* Smooth animations */
@@ -84,4 +84,17 @@
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Dark mode specific styles */
+.dark {
+  color-scheme: dark;
+}
+
+.dark .glass-effect {
+  @apply bg-neutral-900/20 border-neutral-700/30;
+}
+
+.dark .text-gradient {
+  @apply from-primary-400 via-accent-400 to-primary-600;
 }

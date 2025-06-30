@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Search, Moon, Sun } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const Header = () => {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'glass-effect shadow-lg backdrop-blur-xl' 
+          ? 'glass-effect shadow-lg backdrop-blur-xl border-b border-neutral-200/20 dark:border-neutral-700/20' 
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -60,8 +61,8 @@ const Header = () => {
                 <motion.div
                   className={`font-medium relative group ${
                     location.pathname === item.path
-                      ? 'text-primary-600'
-                      : 'text-neutral-700 hover:text-primary-600'
+                      ? 'text-primary-600 dark:text-primary-400'
+                      : 'text-neutral-700 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400'
                   }`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -80,37 +81,56 @@ const Header = () => {
           {/* Actions */}
           <div className="flex items-center space-x-4">
             <motion.button
-              className="p-2 rounded-full hover:bg-neutral-100 transition-colors"
+              className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Search className="w-5 h-5 text-neutral-600" />
+              <Search className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
             </motion.button>
             
             <motion.button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-full hover:bg-neutral-100 transition-colors"
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
-              {isDarkMode ? (
-                <Sun className="w-5 h-5 text-neutral-600" />
-              ) : (
-                <Moon className="w-5 h-5 text-neutral-600" />
-              )}
+              <AnimatePresence mode="wait">
+                {isDarkMode ? (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Sun className="w-5 h-5 text-amber-500" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Moon className="w-5 h-5 text-neutral-600" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.button>
 
             {/* Mobile menu button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-full hover:bg-neutral-100 transition-colors"
+              className="md:hidden p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
               {isMenuOpen ? (
-                <X className="w-5 h-5 text-neutral-600" />
+                <X className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
               ) : (
-                <Menu className="w-5 h-5 text-neutral-600" />
+                <Menu className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
               )}
             </motion.button>
           </div>
@@ -121,7 +141,7 @@ const Header = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden glass-effect border-t border-white/20"
+            className="md:hidden glass-effect border-t border-white/20 dark:border-neutral-700/20"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -133,8 +153,8 @@ const Header = () => {
                   <motion.div
                     className={`block font-medium py-2 ${
                       location.pathname === item.path
-                        ? 'text-primary-600'
-                        : 'text-neutral-700 hover:text-primary-600'
+                        ? 'text-primary-600 dark:text-primary-400'
+                        : 'text-neutral-700 dark:text-neutral-300 hover:text-primary-600 dark:hover:text-primary-400'
                     }`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
